@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Program.cs~RF15845d2c.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Events\Add\" />
+    <Folder Include="Features\Events\Create\" />
+    <Folder Include="Features\Events\List\" />
+    <Folder Include="Features\Events\Get\" />
+    <Folder Include="Features\Events\Update\" />
+    <Folder Include="Features\Events\Remove\" />
+    <Folder Include="Features\Dashboard\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.0.0" />
+    <PackageReference Include="Mapster" Version="7.3.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.4" />
+    <PackageReference Include="Nudes.Paginator" Version="1.0.780" />
+    <PackageReference Include="Nudes.Retornator.AspnetCore" Version="1.0.784" />
+    <PackageReference Include="Nudes.SeedMaster" Version="1.0.779" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+  </ItemGroup>
+
+</Project>

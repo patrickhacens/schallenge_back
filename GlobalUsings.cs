@@ -1,0 +1,12 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using Mapster;
+global using System.Collections.Generic;
+global using Nudes.Retornator.Core;
+global using FluentValidation;
+global using MediatR;
+global using SChallengeAPI.Data;
+global using Nudes.Paginator.Core;
+global using Nudes.Retornator.AspnetCore.Errors;
+global using SChallengeAPI.Validators;
