@@ -14,7 +14,7 @@ static class Security
         options.SaveToken = false;
         options.IncludeErrorDetails = true;
 
-        options.TokenValidationParameters.ValidIssuer = "https://localhost:5000";
+        options.TokenValidationParameters.ValidIssuer = "http://localhost:5000";
         options.TokenValidationParameters.IgnoreTrailingSlashWhenValidatingAudience = true;
         options.TokenValidationParameters.RequireAudience = true;
         options.TokenValidationParameters.RequireExpirationTime = true;

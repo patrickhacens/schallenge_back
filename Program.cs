@@ -115,8 +115,6 @@ builder.Services.AddCors(setup =>setup
 /////////////////////////////////////////////////////////////////////////////
 var app = builder.Build();
 
-app.UseHttpsRedirection();
-
 app.UseSwaggerUI(d => d.SwaggerEndpoint("schallenge/swagger.json", "schallenge"));
 
 app.UseRouting();
@@ -130,8 +128,7 @@ app.MapSwagger();
 app.MapControllers();
 
 app.Urls.Clear();
-app.Urls.Add("https://localhost:5000");
-app.Urls.Add("http://localhost:5001");
+app.Urls.Add("http://localhost:5000");
 
 
 using (var scope = app.Services.CreateScope())
