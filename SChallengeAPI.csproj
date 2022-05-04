@@ -7,21 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Events\Create\**" />
+    <Content Remove="Features\Events\Create\**" />
+    <EmbeddedResource Remove="Features\Events\Create\**" />
+    <None Remove="Features\Events\Create\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Program.cs~RF15845d2c.TMP" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Events\Add\" />
-    <Folder Include="Features\Events\Create\" />
-    <Folder Include="Features\Events\List\" />
-    <Folder Include="Features\Events\Get\" />
-    <Folder Include="Features\Events\Update\" />
-    <Folder Include="Features\Events\Remove\" />
-    <Folder Include="Features\Dashboard\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="FluentValidation" Version="11.0.0" />
+    <PackageReference Include="Macross.Json.Extensions" Version="2.2.0" />
     <PackageReference Include="Mapster" Version="7.3.0" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />

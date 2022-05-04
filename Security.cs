@@ -11,10 +11,10 @@ static class Security
     public static void SetupSecurityDetails(JwtBearerOptions options)
     {
         options.Audience = "schallenge";
-        options.Authority = "https://localhost:5000";
         options.SaveToken = false;
         options.IncludeErrorDetails = true;
 
+        options.TokenValidationParameters.ValidIssuer = "https://localhost:5000";
         options.TokenValidationParameters.IgnoreTrailingSlashWhenValidatingAudience = true;
         options.TokenValidationParameters.RequireAudience = true;
         options.TokenValidationParameters.RequireExpirationTime = true;
@@ -25,15 +25,6 @@ static class Security
         options.TokenValidationParameters.ValidateIssuerSigningKey = true;
         options.TokenValidationParameters.ValidateLifetime = true;
         options.TokenValidationParameters.ValidAlgorithms = new[] { SecurityAlgorithms.HmacSha512 };
-        options.Events = new JwtBearerEvents
-        {
-            OnChallenge = (context) =>
-            {
-                context.Response.StatusCode = 403;
-                return context.Response.WriteAsync("");
-            }
-        };
-
     }
 
 }

@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using SChallengeAPI.Models;
 using SChallengeAPI.Services;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 namespace SChallengeAPI.Features.Auth;
@@ -48,15 +49,23 @@ class AuthHandler : IRequestHandler<AuthRequest, ResultOf<AuthResult>>
 
         logger.LogInformation("User {username} has sucessfully authenticated", request.Username);
 
+        var claims = new List<Claim>()
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+            new Claim(JwtRegisteredClaimNames.Name, request.Username),
+        };
+
+
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Security.Key));
         var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
         var token = new JwtSecurityToken(
-            options.Authority,
+            options.TokenValidationParameters.ValidIssuer,
             options.Audience,
+            claims: claims,
             notBefore: DateTime.Now,
             expires: DateTime.Now.AddDays(1),
             signingCredentials: cred);
-
+        
         var accessToken = new JwtSecurityTokenHandler().WriteToken(token);
         return new AuthResult
         {

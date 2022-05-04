@@ -43,11 +43,6 @@ public class UsersController : ControllerBase
     public Task<Result> Remove([FromRoute] RemoveUserRequest request, CancellationToken cancellation)
         => mediator.Send(request, cancellation);
 
-    [Authorize]
-    [HttpGet("check")]
-    public IActionResult Check()
-    {
-        return Ok(User.Identities.SelectMany(d => d.Claims).ToList());
-    }
+
 
 }

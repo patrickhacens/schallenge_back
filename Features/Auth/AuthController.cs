@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SChallengeAPI.Models;
 
 namespace SChallengeAPI.Features.Auth;
@@ -26,4 +27,18 @@ public class AuthController : ControllerBase
     [HttpPost]
     public Task<ResultOf<AuthResult>> Auth([FromBody] AuthRequest request, CancellationToken cancellation)
         => mediator.Send(request, cancellation);
+
+    /// <summary>
+    /// Checking authorization and claims
+    /// </summary>
+    [Authorize]
+    [HttpGet]
+    public IActionResult Check()
+    {
+        return Ok(User.Identities.SelectMany(d => d.Claims).Select(d => new
+        {
+            d.Type,
+            d.Value
+        }).ToList());
+    }
 }
