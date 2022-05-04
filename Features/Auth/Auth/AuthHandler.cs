@@ -11,7 +11,7 @@ namespace SChallengeAPI.Features.Auth;
 
 class AuthHandler : IRequestHandler<AuthRequest, ResultOf<AuthResult>>
 {
-    private const string errorMessage = "Username does not exists or not found";
+    private const string errorMessage = "User does not exists or not found";
     private readonly Db db;
     private readonly ILogger<AuthHandler> logger;
     private readonly JwtBearerOptions options;
