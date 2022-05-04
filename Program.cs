@@ -115,6 +115,8 @@ builder.Services.AddCors(setup =>setup
 /////////////////////////////////////////////////////////////////////////////
 var app = builder.Build();
 
+app.UseHttpsRedirection();
+
 app.UseSwaggerUI(d => d.SwaggerEndpoint("schallenge/swagger.json", "schallenge"));
 
 app.UseRouting();
